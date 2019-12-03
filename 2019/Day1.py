@@ -9,16 +9,13 @@ def part_one(masses):
         total_fuel = total_fuel + i
     return total_fuel
 
-# 
 
 def part_two(masses):
     total = 0
     for mass in masses:
         total += do_math(mass)
-
     return total
     
-
 def do_math(mass):
     mass_fuel = 0
     while mass > 0:
