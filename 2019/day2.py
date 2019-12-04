@@ -1,10 +1,12 @@
 import sys
 import math
+import copy
 
 # Intercode
-def part_one(code):
-    code[1] = 12
-    code[2] = 2
+def part_one(Intercode, noun=12, verb=2):
+    code = copy.deepcopy(Intercode)  # do not modify original
+    code[1] = noun
+    code[2] = verb
     for i in range(0 ,len(code), 4):
         p_one = code[i+1] 
         p_two = code[i+2]
@@ -21,13 +23,19 @@ def part_one(code):
 
 
 def part_two(Intercode):
-    return Intercode
+    for i in range(0,100):
+        noun = i
+        for j in range(0,100):
+            verb = j
+            if part_one(Intercode, noun , verb) == 19690720:
+                return 100 * noun + verb
+    
+
     
         
 if __name__ == '__main__':
     data = [int(i) for i in input().split(',')]
-    print ("THIS IS NUBER ONE")
-    print(part_one(data))
-    print ("THIS IS NUMBER TWO")
-    print(part_two(data))
+    print (f"THIS IS NUBER ONE {part_one(data)}")
+    print (f"THIS IS NUMBER TWO {part_two(data)}")
+    
 
